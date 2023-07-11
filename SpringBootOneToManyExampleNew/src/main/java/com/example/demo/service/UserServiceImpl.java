@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
@@ -17,6 +20,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		System.out.println("In Service impl : " + user);
 		userRepository.save(user);
+	}
+
+	@Override
+	public List<User> getAllData() {
+		// TODO Auto-generated method stub
+		List<User> users = userRepository.findAll(Sort.by("name").ascending());
+		return users;
 	}
 
 }
